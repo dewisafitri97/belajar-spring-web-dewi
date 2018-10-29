@@ -1,14 +1,14 @@
 package com.flashdin.belajarspringweb.entity;
 
-public class Mhs extends User {
+public class Mahasiswa extends User {
     private String name;
     private String address;
 
-    public Mhs(){
+    public Mahasiswa(){
 
     }
 
-    public Mhs(String nama, String alamat){
+    public Mahasiswa(String nama, String alamat){
         this.name = name;
         this.address = address;
     }

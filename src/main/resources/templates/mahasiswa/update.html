@@ -25,37 +25,24 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="form-group col-md-4">
-            <h2>Insert Mahasiswa</h2>
+            <h2>Edit Mahasiswa</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4"></div>
         <div class="form-group col-md-4">
-            <button type="button" class="close" onclick="window.location.href='/mhs';">&times;</button>
+            <button type="button" class="close" onclick="window.location.href='/mahasiswa';">&times;</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div th:if="${param.failed}" class="alert alert-warning col-md-4" role="alert">
-            <strong>NOTIFIKASI : </strong> Gagal simpan data
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div th:if="${param.success}" class="alert alert-success col-md-4" role="alert">
-            <strong>NOTIFIKASI : </strong> Berhasil simpan data
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    </div>
-    <form th:action="@{/mhs/create}" th:method="post">
+    <form th:object="${dataSets}" th:action="@{/mahasiswa/update}" th:method="put">
+        <input type="hidden" th:id="id" th:name="id" th:field="*{id}">
+
         <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
                 <label for="name">Nama</label>
                 <input type="text" class="form-control" th:id="name" th:name="name" placeholder="Nama Lengkap"
-                       required>
+                       th:field="*{name}" required>
             </div>
         </div>
         <div class="row">
@@ -63,7 +50,7 @@
             <div class="form-group col-md-4">
                 <label for="address">Alamat</label>
                 <input type="text" class="form-control" th:id="address" th:name="address" placeholder="Alamat"
-                       required>
+                       th:field="*{address}" required>
             </div>
         </div>
 

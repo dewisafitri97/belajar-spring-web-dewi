@@ -1,8 +1,7 @@
 package com.flashdin.belajarspringweb.dao.impl;
 
-import com.flashdin.belajarspringweb.dao.MhsDAO;
-import com.flashdin.belajarspringweb.entity.Mhs;
-import com.flashdin.belajarspringweb.entity.Profile;
+import com.flashdin.belajarspringweb.dao.MataKuliahDAO;
+import com.flashdin.belajarspringweb.entity.MataKuliah;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,19 +14,18 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public class MhsDAOImpl implements MhsDAO {
+public class MataKuliahDAOImpl implements MataKuliahDAO {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Mhs save(Mhs param){
-        String sql = "insert into table_students (name, address) values (?,?)";
+    public MataKuliah save(MataKuliah param) {
+        String sql = "insert into table_makul (makul) values (?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, param.getName());
-            ps.setString(2, param.getAddress());
+            ps.setString(1, param.getMakul());
 
             return ps;
         }, keyHolder);
@@ -36,13 +34,12 @@ public class MhsDAOImpl implements MhsDAO {
     }
 
     @Override
-    public Mhs update(Mhs param) {
-        String sql = "update table_students set name=?,address=? where id=?";
+    public MataKuliah update(MataKuliah param) {
+        String sql = "update table_makul set makul=? where id=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, param.getName());
-            ps.setString(2, param.getAddress());
-            ps.setInt(3, param.getId());
+            ps.setString(1, param.getMakul());
+            ps.setInt(2, param.getId());
             return ps;
         });
         param.setId(rtn);
@@ -50,8 +47,8 @@ public class MhsDAOImpl implements MhsDAO {
     }
 
     @Override
-    public int delete(Mhs param) {
-        String sql = "delete from table_students where id=?";
+    public int delete(MataKuliah param) {
+        String sql = "delete from table_makul where id=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, param.getId());
@@ -61,23 +58,21 @@ public class MhsDAOImpl implements MhsDAO {
     }
 
     @Override
-    public Mhs findById(int id) {
-        String sql = "select * from table_students where id=?";
-        return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Mhs.class));
+    public MataKuliah findById(int id) {
+        String sql = "select * from table_makul where id=?";
+        return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(MataKuliah.class));
     }
 
     @Override
-    public List<Mhs> findAll() {
-        String sql = "select * from table_students";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Mhs.class));
+    public List<MataKuliah> findAll() {
+        String sql = "select * from table_makul";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(MataKuliah.class));
     }
 
     @Override
-    public List<Mhs> findByName(Mhs param) {
-        String sql = "select * from table_students where name like ?";
-        return jdbcTemplate.query(sql, new Object[]{"%" + param.getName() + "%"}, new BeanPropertyRowMapper<>(Mhs.class));
+    public List<MataKuliah> findByName(MataKuliah param) {
+        String sql = "select * from table_makul where makul like ?";
+        return jdbcTemplate.query(sql, new Object[]{"%" + param.getMakul() + "%"}, new BeanPropertyRowMapper<>(MataKuliah.class));
     }
+
 }
-
-
-

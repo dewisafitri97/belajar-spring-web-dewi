@@ -1,13 +1,13 @@
 package com.flashdin.belajarspringweb.entity;
 
-public class Matkul extends User {
+public class MataKuliah extends User {
 
    private String makul;
 
-    public Matkul() {
+    public MataKuliah() {
     }
 
-    public Matkul(String makul) {
+    public MataKuliah(String makul) {
         this.makul = makul;
     }
 

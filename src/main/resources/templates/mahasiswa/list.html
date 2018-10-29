@@ -209,14 +209,14 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col col-md-12">
-                        <button class="btn btn-primary" onclick="window.location.href='/mhs/create';"><span
+                        <button class="btn btn-primary" onclick="window.location.href='/mahasiswa/create';"><span
                                 class="fa fa-plus"></span>
                         </button>
-                        <button class="btn btn-default" onclick="window.location.href='/mhs';"><span
+                        <button class="btn btn-default" onclick="window.location.href='/mahasiswa';"><span
                                 class="fa fa-refresh"></span>
                         </button>
                         <div class="input-group" id="adv-search">
-                            <form th:id="form-search" th:action="@{/mhs}"
+                            <form th:id="form-search" th:action="@{/mahasiswa}"
                                   th:method="get">
                                 <input class="form-control" type="text" id="search" name="search"
                                        th:value="${param.search}"
@@ -230,7 +230,7 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                                             <form th:id="form-search" class="form-horizontal" role="form"
-                                                  th:action="@{/mhs}"
+                                                  th:action="@{/mahasiswa}"
                                                   th:method="get">
                                                 <div class="form-group">
                                                     <label for="filter">Filter :</label>
@@ -270,7 +270,7 @@
                         <td th:text="${data.address}"></td>
 
                         <td align="center">
-                            <a th:href="${'mhs/update/' + data.id}" class="btn btn-warning"><i
+                            <a th:href="${'mahasiswa/update/' + data.id}" class="btn btn-warning"><i
                                     class="fa fa-pencil"></i></a>
                             <a href="#" class="delete-modal btn btn-danger"
                                th:data-value="${data.id}"
@@ -299,7 +299,7 @@
                     <p>Aksi ini tidak dapat di ulang.</p>
                 </div>
                 <div class="modal-footer">
-                    <form th:action="@{/mhs/delete}" th:method="delete">
+                    <form th:action="@{/mahasiswa/delete}" th:method="delete">
                         <input type="hidden" th:id="id" th:name="id">
                         <button type="submit" class="btn btn-danger" name="task_del">Hapus</button>
                     </form>

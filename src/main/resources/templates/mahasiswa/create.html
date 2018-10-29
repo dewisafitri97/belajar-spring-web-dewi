@@ -25,13 +25,13 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="form-group col-md-4">
-            <h2>Insert Mata Kuliah</h2>
+            <h2>Insert Mahasiswa</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4"></div>
         <div class="form-group col-md-4">
-            <button type="button" class="close" onclick="window.location.href='/matkul';">&times;</button>
+            <button type="button" class="close" onclick="window.location.href='/mahasiswa';">&times;</button>
         </div>
     </div>
     <div class="row">
@@ -49,16 +49,23 @@
             </button>
         </div>
     </div>
-    <form th:action="@{/makul/create}" th:method="post">
+    <form th:action="@{/mahasiswa/create}" th:method="post">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
-                <label for="makul">Nama Mata Kuliah</label>
-                <input type="text" class="form-control" th:id="makul" th:name="makul" placeholder="Nama Mata Kuliah"
+                <label for="name">Nama</label>
+                <input type="text" class="form-control" th:id="name" th:name="name" placeholder="Nama Lengkap"
                        required>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="form-group col-md-4">
+                <label for="address">Alamat</label>
+                <input type="text" class="form-control" th:id="address" th:name="address" placeholder="Alamat"
+                       required>
+            </div>
+        </div>
 
 
         <div class="row">

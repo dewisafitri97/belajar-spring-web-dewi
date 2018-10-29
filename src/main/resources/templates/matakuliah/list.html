@@ -209,14 +209,14 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col col-md-12">
-                        <button class="btn btn-primary" onclick="window.location.href='/matkul/create';"><span
+                        <button class="btn btn-primary" onclick="window.location.href='/mataKuliah/create';"><span
                                 class="fa fa-plus"></span>
                         </button>
-                        <button class="btn btn-default" onclick="window.location.href='/matkul';"><span
+                        <button class="btn btn-default" onclick="window.location.href='/mataKuliah';"><span
                                 class="fa fa-refresh"></span>
                         </button>
                         <div class="input-group" id="adv-search">
-                            <form th:id="form-search" th:action="@{/matkul}"
+                            <form th:id="form-search" th:action="@{/mataKuliah}"
                                   th:method="get">
                                 <input class="form-control" type="text" id="search" name="search"
                                        th:value="${param.search}"
@@ -230,7 +230,7 @@
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right" role="menu">
                                             <form th:id="form-search" class="form-horizontal" role="form"
-                                                  th:action="@{/matkul}"
+                                                  th:action="@{/mataKuliah}"
                                                   th:method="get">
                                                 <div class="form-group">
                                                     <label for="filter">Filter :</label>
@@ -297,7 +297,7 @@
                     <p>Aksi ini tidak dapat di ulang.</p>
                 </div>
                 <div class="modal-footer">
-                    <form th:action="@{/matkul/delete}" th:method="delete">
+                    <form th:action="@{/mataKuliah/delete}" th:method="delete">
                         <input type="hidden" th:id="id" th:name="id">
                         <button type="submit" class="btn btn-danger" name="task_del">Hapus</button>
                     </form>
