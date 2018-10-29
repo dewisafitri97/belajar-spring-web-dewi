@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+
+    <style>
+        table#t01{
+            text-align:center;
+        }
+        table, th, td {
+            border: 0px solid blue;
+            border-collapse: collapse;
+        }
+        h2,h1#judul1{
+            text-align : center;
+            color : blue;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+        table#t01 {
+            width: 50%;
+            background-color: #f1f1c1;
+        }
+        th#bg1 {
+            background-color: pink;
+        }
+        th#bg2 {
+            background-color: yellow;
+        }
+        tr#bg2 {
+            background-color: yellow;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+<h1 align="center">LOGIN ADMIN</h1>
+
+<!-- /login?error=true -->
+<div th:if="${#request.getParameter('error') == 'true'}"
+     style="color:red;margin:10px 0px;">
+    Login Failed!!!<br />
+    Reason :
+    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+          th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+                Static summary
+         </span>
+
+</div>
+
+<h3 align="center">Enter username and password:</h3>
+<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+    <table id="t01" align="center">
+        <tr>
+            <td>Username:</td>
+            <td><input type='text' name='username' value=''></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type='password' name='password' /></td>
+        </tr>
+        <tr>
+            <td><input name="submit" type="submit" value="submit" /></td>
+        </tr>
+    </table>
+</form>
+
+
+
+</body>
+
+</html>
