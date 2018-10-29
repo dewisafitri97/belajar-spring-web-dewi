@@ -14,10 +14,10 @@ public class Mahasiswa extends User {
     }
 
     @Override
-    public int getId(){ return id;}
+    public int getUSER_ID(){ return USER_ID;}
 
     @Override
-    public void setId(int id){this.id = id;}
+    public void setUSER_ID(int id){this.USER_ID = USER_ID;}
 
     public String getName() {
         return name;

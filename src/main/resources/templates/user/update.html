@@ -35,21 +35,21 @@
         </div>
     </div>
     <form th:object="${dataSets}" th:action="@{/user/update}" th:method="put">
-        <input type="hidden" th:id="id" th:name="id" th:field="*{id}">
+        <input type="hidden" th:id="USER_ID" th:name="id" th:field="*{USER_ID}">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" th:id="username" placeholder="Username"
-                       th:field="*{username}" required>
+                <label for="USER_NAME">USER_NAME</label>
+                <input type="text" class="form-control" th:id="USER_NAME" placeholder="USER_NAME"
+                       th:field="*{USER_NAME}" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
-                <label for="password">Password</label>
+                <label for="ENCRYTED_PASSWORD">Password</label>
                 <input type="text" class="form-control" th:id="password" placeholder="Password"
-                       th:field="*{password}" required>
+                       th:field="*{ENCRYTED_PASSWORD}" required>
             </div>
         </div>
         <div class="row">

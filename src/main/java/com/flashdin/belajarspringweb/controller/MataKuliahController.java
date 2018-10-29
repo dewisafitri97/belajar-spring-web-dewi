@@ -20,8 +20,8 @@ public class MataKuliahController {
         return "/mataKuliah/create";
     }
 
-    @GetMapping(path = "/update/{id}")
-    public String viewUpdate(Model model, @PathVariable(value = "id") int id) {
+    @GetMapping(path = "/update/{USER_ID}")
+    public String viewUpdate(Model model, @PathVariable(value = "USER_ID") int id) {
         model.addAttribute("dataSets", mataKuliahService.findById(id));
         return "/mataKuliah/update";
     }
@@ -29,7 +29,7 @@ public class MataKuliahController {
     @PostMapping(value = "/create")
     public String save(MataKuliah param) {
         MataKuliah data = mataKuliahService.save(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/mataKuliah/create?failed";
         } else {
             return "redirect:/mataKuliah/create?success";
@@ -39,7 +39,7 @@ public class MataKuliahController {
     @PutMapping(path = "/update")
     public String update(MataKuliah param) {
         MataKuliah data = mataKuliahService.update(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/mataKuliah?ufailed";
         } else {
             return "redirect:/mataKuliah?usuccess";

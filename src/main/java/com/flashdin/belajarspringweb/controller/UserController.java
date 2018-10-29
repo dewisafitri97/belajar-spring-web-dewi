@@ -30,7 +30,7 @@ public class UserController {
     @PostMapping(value = "/create")
     public String save(User param) {
         User data = userService.save(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/user/create?failed";
         } else {
             return "redirect:/user/create?success";
@@ -40,7 +40,7 @@ public class UserController {
     @PutMapping(path = "/update")
     public String update(User param) {
         User data = userService.update(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/user?ufailed";
         } else {
             return "redirect:/user?usuccess";
@@ -64,7 +64,7 @@ public class UserController {
             model.addAttribute("dataSets", userService.findAll());
         } else {
             User user = new User();
-            user.setUsername(param);
+            user.setUSER_NAME(param);
             model.addAttribute("dataSets", userService.findByUsername(user));
         }
         return "/user/list";

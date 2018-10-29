@@ -30,30 +30,30 @@ public class MahasiswaDAOImpl implements MahasiswaDAO {
 
             return ps;
         }, keyHolder);
-        param.setId(keyHolder.getKey().intValue());
+        param.setUSER_ID(keyHolder.getKey().intValue());
         return param;
     }
 
     @Override
     public Mahasiswa update(Mahasiswa param) {
-        String sql = "update table_students set name=?,address=? where id=?";
+        String sql = "update table_students set name=?,address=? where USER_ID=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, param.getName());
             ps.setString(2, param.getAddress());
-            ps.setInt(3, param.getId());
+            ps.setInt(3, param.getUSER_ID());
             return ps;
         });
-        param.setId(rtn);
+        param.setUSER_ID(rtn);
         return param;
     }
 
     @Override
     public int delete(Mahasiswa param) {
-        String sql = "delete from table_students where id=?";
+        String sql = "delete from table_students where USER_ID=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, param.getId());
+            ps.setInt(1, param.getUSER_ID());
             return ps;
         });
         return rtn;
@@ -61,7 +61,7 @@ public class MahasiswaDAOImpl implements MahasiswaDAO {
 
     @Override
     public Mahasiswa findById(int id) {
-        String sql = "select * from table_students where id=?";
+        String sql = "select * from table_students where USER_ID=?";
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Mahasiswa.class));
     }
 

@@ -32,32 +32,32 @@ public class ProfileDAOImpl implements ProfileDAO {
             ps.setString(4, param.getJk());
             return ps;
         }, keyHolder);
-        param.setId(keyHolder.getKey().intValue());
+        param.setUSER_ID(keyHolder.getKey().intValue());
         return param;
     }
 
     @Override
     public Profile update(Profile param) {
-        String sql = "update table_profile set namaLengkap=?,alamat=?,umur=?,jk=? where id=?";
+        String sql = "update table_profile set namaLengkap=?,alamat=?,umur=?,jk=? where USER_ID=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, param.getNamaLengkap());
             ps.setString(2, param.getAlamat());
             ps.setInt(3, param.getUmur());
             ps.setString(4, param.getJk());
-            ps.setInt(5, param.getId());
+            ps.setInt(5, param.getUSER_ID());
             return ps;
         });
-        param.setId(rtn);
+        param.setUSER_ID(rtn);
         return param;
     }
 
     @Override
     public int delete(Profile param) {
-        String sql = "delete from table_profile where id=?";
+        String sql = "delete from table_profile where USER_ID=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, param.getId());
+            ps.setInt(1, param.getUSER_ID());
             return ps;
         });
         return rtn;
@@ -65,7 +65,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 
     @Override
     public Profile findById(int id) {
-        String sql = "select * from table_profile where id=?";
+        String sql = "select * from table_profile where USER_ID=?";
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Profile.class));
     }
 

@@ -29,7 +29,7 @@ public class MahasiswaController {
     @PostMapping(value = "/create")
     public String save(Mahasiswa param) {
         Mahasiswa data = mahasiswaService.save(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/mahasiswa/create?failed";
         } else {
             return "redirect:/mahasiswa/create?success";
@@ -39,7 +39,7 @@ public class MahasiswaController {
     @PutMapping(path = "/update")
     public String update(Mahasiswa param) {
         Mahasiswa data = mahasiswaService.update(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/mahasiswa?ufailed";
         } else {
             return "redirect:/mahasiswa?usuccess";

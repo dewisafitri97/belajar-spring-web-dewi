@@ -30,7 +30,7 @@ public class ProfileController {
     @PostMapping(value = "/create")
     public String save(Profile param) {
         Profile data = profileService.save(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/profile/create?failed";
         } else {
             return "redirect:/profile/create?success";
@@ -40,7 +40,7 @@ public class ProfileController {
     @PutMapping(path = "/update")
     public String update(Profile param) {
         Profile data = profileService.update(param);
-        if (data.getId() == 0) {
+        if (data.getUSER_ID() == 0) {
             return "redirect:/profile?ufailed";
         } else {
             return "redirect:/profile?usuccess";

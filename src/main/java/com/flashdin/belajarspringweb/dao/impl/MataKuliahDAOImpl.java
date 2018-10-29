@@ -29,29 +29,29 @@ public class MataKuliahDAOImpl implements MataKuliahDAO {
 
             return ps;
         }, keyHolder);
-        param.setId(keyHolder.getKey().intValue());
+        param.setUSER_ID(keyHolder.getKey().intValue());
         return param;
     }
 
     @Override
     public MataKuliah update(MataKuliah param) {
-        String sql = "update table_makul set makul=? where id=?";
+        String sql = "update table_makul set makul=? where USER_ID=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, param.getMakul());
-            ps.setInt(2, param.getId());
+            ps.setInt(2, param.getUSER_ID());
             return ps;
         });
-        param.setId(rtn);
+        param.setUSER_ID(rtn);
         return param;
     }
 
     @Override
     public int delete(MataKuliah param) {
-        String sql = "delete from table_makul where id=?";
+        String sql = "delete from table_makul where USER_ID=?";
         int rtn = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, param.getId());
+            ps.setInt(1, param.getUSER_ID());
             return ps;
         });
         return rtn;
@@ -59,7 +59,7 @@ public class MataKuliahDAOImpl implements MataKuliahDAO {
 
     @Override
     public MataKuliah findById(int id) {
-        String sql = "select * from table_makul where id=?";
+        String sql = "select * from table_makul where USER_ID=?";
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(MataKuliah.class));
     }
 

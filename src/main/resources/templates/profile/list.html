@@ -272,10 +272,10 @@
                         <td th:text="${data.umur}"></td>
                         <td th:text="${data.jk}"></td>
                         <td align="center">
-                            <a th:href="${'profile/update/' + data.id}" class="btn btn-warning"><i
+                            <a th:href="${'profile/update/' + data.USER_ID}" class="btn btn-warning"><i
                                     class="fa fa-pencil"></i></a>
                             <a href="#" class="delete-modal btn btn-danger"
-                               th:data-value="${data.id}"
+                               th:data-value="${data.USER_ID}"
                                data-toggle="modal"
                                data-target="#myModal"><i class="fa fa-trash"></i></a>
                         </td>
@@ -302,7 +302,7 @@
                 </div>
                 <div class="modal-footer">
                     <form th:action="@{/profile/delete}" th:method="delete">
-                        <input type="hidden" th:id="id" th:name="id">
+                        <input type="hidden" th:id="USER_ID" th:name="USER_ID">
                         <button type="submit" class="btn btn-danger" name="task_del">Hapus</button>
                     </form>
                 </div>
@@ -315,7 +315,7 @@
     $(document).ready(function (e) {
         $(document).on("click", ".delete-modal", function (e) {
             var id = $(this).attr('data-value');
-            $('input[name="id"]').val(id);
+            $('input[name="USER_ID"]').val(id);
         });
     });
 </script>
